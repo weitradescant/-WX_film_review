@@ -1,4 +1,4 @@
-// pages/comment/comment.js
+// pages/commentPreview/commentPreview.js
 Page({
 
   /**

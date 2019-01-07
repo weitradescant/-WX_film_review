@@ -5,9 +5,9 @@
     "pages/movieDtl/movieDtl",
     "pages/commentList/commentList",
     "pages/commentDtl/commentDtl",
-    "pages/comment/comment",
-    "pages/home/home",
-    "pages/home/home"
+    "pages/commentEdit/commentEdit",
+    "pages/commentPreview/commentPreview",
+    "pages/user/user"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",
