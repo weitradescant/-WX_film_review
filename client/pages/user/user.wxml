@@ -1,2 +1,25 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class='title'>收藏的影评∨</view>
+
+<view class='area'>
+  <image src='/img/p2517753454.jpg' class='img__movie'></image>
+  <view class='introduce'>
+    <view>复仇者联盟3：无限战争</view>
+    <view>评论</view>
+    <view>谁评论的</view>
+  </view>
+</view>
+
+<view class='area'>
+  <image src='/img/p1606727862.jpg' class='img__movie'></image>
+  <view class='introduce'>
+    <view>千与千寻</view>
+    <view>评论</view>
+    <view>谁评论的</view>
+  </view>
+</view>
+
+
+<view class='nav-bar'>
+  <view class='home' bindtap='onTapHome'>回到首页</view>
+</view>

@@ -1,2 +1,12 @@
 <!--pages/commentList/commentList.wxml-->
-<text>pages/commentList/commentList.wxml</text>
+<view class='comment' bindtap='onTapCommentDtl'>
+
+</view>
+<view class='comment' bindtap='onTapCommentDtl'>
+
+</view>
+
+
+<view class='nav-bar'>
+  <view class='home' bindtap='onTapHome'>回到首页</view>
+</view>

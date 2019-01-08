@@ -1,2 +1,10 @@
 <!--pages/commentEdit/commentEdit.wxml-->
-<text>pages/commentEdit/commentEdit.wxml</text>
+<view class='wrap'>
+  <image src='/img/p2517753454.jpg' class='img__movie'></image>
+  <view class='title'>复仇者联盟3：无限战争</view>
+  <view>评论评论</view>
+  <view class='operation'>
+    <view class='addComment'><image src='/img/icon/addComment.png' class='icon'></image>录音</view>
+  </view>
+</view>
+<view>完成bar</view>
