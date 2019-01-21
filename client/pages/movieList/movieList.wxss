@@ -15,6 +15,16 @@ page{
 }
 .introduce{
   width: 420rpx;
+  padding-left: 30rpx;
+  padding-top: 90rpx;
   border: 1px solid #E6EBF0;
   background: #fff;
+}
+.title{
+  font-weight: bold;
+  font-size: 15px;
+}
+.category{
+  margin-top: 70rpx;
+  font-size: 12px;
 }

@@ -1,16 +1,8 @@
 <!--pages/movieList/movieList.wxml-->
-<view class='area' bindtap='onTapMoiveDtl'>
-  <image src='/img/p2517753454.jpg' class='img__movie'></image>
+<view class='area' bindtap='onTapMoiveDtl' wx:for="{{movies}}">
+  <image src='{{item.image}}' class='img__movie'></image>
   <view class='introduce'>
-    <view>复仇者联盟3：无限战争</view>
-    <view>影片类型</view>
-  </view>
-</view>
-
-<view class='area' bindtap='onTapMoiveDtl'>
-  <image src='/img/p1606727862.jpg' class='img__movie'></image>
-  <view class='introduce'>
-    <view>千与千寻</view>
-    <view>影片类型</view>
+    <view class='title'>{{item.title}}</view>
+    <view class='category'>{{item.category}}</view>
   </view>
 </view>
