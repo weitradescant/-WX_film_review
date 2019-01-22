@@ -2,7 +2,7 @@
 page{
   background: #F7F9FC;
   width: 100%;
-  height: 100%;
+  padding-top: 50rpx;
 }
 .comment{
   width: 100%;
@@ -10,9 +10,6 @@ page{
   background: #fff;
   border: 1px solid #E6EBF0;
 
-}
-.comment:first-child{
-  margin-top: 50rpx;
 }
 
 .nav-bar{

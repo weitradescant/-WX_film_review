@@ -1,10 +1,10 @@
 <!--pages/movieDtl/movieDtl.wxml-->
 <view class='wrap'>
-  <image src='/img/p2517753454.jpg' class='img__movie'></image>
-  <view class='title'>复仇者联盟3：无限战争</view>
-  <view>介绍介绍</view>
+  <image src='{{movies.image}}' class='img__movie'></image>
+  <view class='title'>{{movies.title}}</view>
+  <view class='description'>{{movies.description}}</view>
   <view class='operation'>
     <view class='commentList' bindtap='onTapCommentList'><image src='/img/icon/commentList.png' class='icon'></image>查看影评</view>
-    <view class='addComment'><image src='/img/icon/addComment.png' class='icon'></image>添加影评</view>
+    <view class='addComment' bindtap='onTapAddComment'><image src='/img/icon/addComment.png' class='icon'></image>添加影评</view>
   </view>
 </view>

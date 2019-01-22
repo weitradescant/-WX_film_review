@@ -1,1 +1,64 @@
 /* pages/commentEdit/commentEdit.wxss */
+page{
+  background: #F7F9FC;
+  width: 100%;
+  padding-top: 150rpx;
+}
+
+.wrap{
+  position: relative;
+  width: 700rpx;
+  height: 550rpx;
+  margin: 0 auto;
+  padding-top: 350rpx;
+  background: #fff;
+  border: 1px solid #E6EBF0;
+}
+.img__movie{
+  position: absolute;
+  left: 210rpx;
+  top: -100rpx;
+  width: 280rpx;
+  height: 400rpx;
+}
+.title{
+  text-align: center;
+  font-weight: bold;
+}
+
+.operation{
+  position: absolute;
+  display: flex;
+  bottom: 50rpx;
+  width: 700rpx;
+  font-size: 34rpx;
+  text-align: center;
+  color: #A5B5C3;
+}
+.icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  vertical-align: text-bottom;
+}
+.record{
+  width: 275rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 auto;
+  border: 1px solid #E6EBF0;
+}
+.record:active{
+  background: #eee;
+}
+
+.complete{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #09BA07;
+  color: #fff;
+}

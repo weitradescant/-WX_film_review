@@ -2,14 +2,14 @@
 page{
   background: #F7F9FC;
   width: 100%;
-  height: 100%;
+  padding-top: 150rpx;
 }
 
 .wrap{
   position: relative;
   width: 700rpx;
   height: 550rpx;
-  margin: 150rpx auto 0;
+  margin: 0 auto;
   padding-top: 350rpx;
   background: #fff;
   border: 1px solid #E6EBF0;

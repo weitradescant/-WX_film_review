@@ -4,7 +4,7 @@
   <view class='title'>复仇者联盟3：无限战争</view>
   <view>评论评论</view>
   <view class='operation'>
-    <view class='commentList' bindtap='onTapCommentList'><image src='/img/icon/commentList.png' class='icon'></image>收藏影评</view>
-    <view class='addComment'><image src='/img/icon/addComment.png' class='icon'></image>写影评</view>
+    <view class='commentList' bindtap='onTapCommentList'><image src='/img/icon/fav.png' class='icon'></image>收藏影评</view>
+    <view class='addComment' bindtap='onTapAddComment'><image src='/img/icon/comment.png' class='icon'></image>写影评</view>
   </view>
 </view>

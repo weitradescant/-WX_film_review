@@ -10,16 +10,17 @@ Page({
       success: result => {
         this.setData({
           movies: result.data.data
-        })
+        })      
       },
       fail: result => {
         console.log('error')
       }
     })
   },
-  onTapMoiveDtl() {
+  onTapMoiveDtl(e) {
+    let movieid = e.currentTarget.dataset.movieid;
     wx.navigateTo({
-      url: '/pages/movieDtl/movieDtl',
+      url: '/pages/movieDtl/movieDtl?movieid=' + movieid,
     })
   }
 })

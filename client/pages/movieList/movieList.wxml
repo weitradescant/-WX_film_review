@@ -1,5 +1,5 @@
 <!--pages/movieList/movieList.wxml-->
-<view class='area' bindtap='onTapMoiveDtl' wx:for="{{movies}}">
+<view class='area' bindtap='onTapMoiveDtl' wx:for="{{movies}}" wx:key="key" data-movieid='{{item.id}}'>
   <image src='{{item.image}}' class='img__movie'></image>
   <view class='introduce'>
     <view class='title'>{{item.title}}</view>
