@@ -26,14 +26,10 @@ page{
   font-weight: bold;
 }
 
-.operation{
-  position: absolute;
-  display: flex;
-  bottom: 50rpx;
-  width: 700rpx;
-  font-size: 34rpx;
-  text-align: center;
-  color: #A5B5C3;
+.comment{
+  width: 650rpx;
+  margin: 20rpx auto 0;
+  text-align: left;
 }
 .icon{
   width: 40rpx;
@@ -45,8 +41,10 @@ page{
   width: 275rpx;
   height: 80rpx;
   line-height: 80rpx;
-  margin: 0 auto;
+  margin: 120rpx auto 0;
   border: 1px solid #E6EBF0;
+  text-align: center;
+  font-size: 34rpx;
 }
 .record:active{
   background: #eee;

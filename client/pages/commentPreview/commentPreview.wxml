@@ -1,7 +1,7 @@
 <!--pages/commentPreview/commentPreview.wxml-->
 <view class='wrap'>
-  <image src='/img/p2517753454.jpg' class='img__movie'></image>
-  <view class='title'>复仇者联盟3：无限战争</view>
+  <image src='{{movies.image}}' class='img__movie'></image>
+  <view class='title'>{{movies.title}}</view>
   <view>评论评论</view>
   <view class='operation'>
     <view class='commentList' bindtap='onTapCommentEdit'><image src='/img/icon/back.png' class='icon'></image>重新编辑</view>

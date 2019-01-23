@@ -1,28 +1,37 @@
 // pages/movieDtl/movieDtl.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index');
+const config = require('../../config')
 Page({
   data: {
     movieid: "",
     movies: []
   },
   onLoad(options) {
+    wx.showLoading({
+      title: '电影数据加载中...',
+    })
     this.setData({
       movieid: options.movieid
     })
     qcloud.request({
-      url: 'https://xi3tufus.qcloud.la/weapp/movies',
+      url: config.service.movieDetail + options.movieid,
       success: result => {
-        let movies = result.data.data;
-        for (const movie of movies) {
-          if (this.data.movieid == movie.id) {
-            this.setData({
-              movies: movie
-            })
-          }
-        }
+        wx.hideLoading()
+        if (!result.data.code) {
+          this.setData({
+            movies: result.data.data[0]
+          })
+        } else {
+          setTimeout(() => {
+            wx.navigateBack()
+          }, 2000)
+        }  
       },
       fail: result => {
-        console.log('error')
+        wx.hideLoading()
+        setTimeout(() => {
+          wx.navigateBack()
+        }, 2000)
       }
     })
   },
@@ -32,11 +41,12 @@ Page({
     })
   },
   onTapAddComment() {
+    let movieid = this.data.movieid
     wx.showActionSheet({
       itemList: ['文字', '音频'],
       success(res) {
         wx.navigateTo({
-          url: '/pages/commentEdit/commentEdit?type=' + res.tapIndex,
+          url: '/pages/commentEdit/commentEdit?type=' + res.tapIndex + '&movieid=' + movieid,
         })
       },
       fail(res) {

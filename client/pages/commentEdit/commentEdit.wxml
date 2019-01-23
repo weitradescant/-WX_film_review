@@ -1,10 +1,8 @@
 <!--pages/commentEdit/commentEdit.wxml-->
 <view class='wrap'>
-  <image src='/img/p2517753454.jpg' class='img__movie'></image>
-  <view class='title'>复仇者联盟3：无限战争</view>
-  <view>评论评论</view>
-  <view class='operation'>
-    <view class='record'><image src='/img/icon/record.png' class='icon'></image>录音</view>
-  </view>
+  <image src='{{movies.image}}' class='img__movie'></image>
+  <view class='title'>{{movies.title}}</view>
+  <textarea  class='comment' wx:if="{{type==='0'}}" placeholder="请输入评论" auto-focus></textarea>
+  <view class='record' wx:if="{{type==='1'}}" bindtap='onTapStartRecord'><image src='/img/icon/record.png' class='icon'></image>录音</view>
 </view>
 <view class='complete' bindtap='onTapCommentPreview'>完成</view>

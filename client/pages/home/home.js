@@ -1,26 +1,39 @@
 // pages/home/home.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index');
-
+const config = require('../../config')
 data: {
   movies: [];
 }
 Page({
   onLoad: function (options){
+    wx.showLoading({
+      title: '电影数据加载中...',
+    })
     qcloud.request({
-      url:'https://xi3tufus.qcloud.la/weapp/movies',
+      url: config.service.movieList,
       success: result => {
-        let ord = Math.floor(Math.random() * 15 + 1);
-        let movies = result.data.data;
-        for (const movie of movies){
-          if(ord === movie.id){
-            this.setData({
-              movies: movie
-            })
+        wx.hideLoading()
+        if(!result.data.code){
+          let ord = Math.floor(Math.random() * 15 + 1);
+          let movies = result.data.data;
+          for (const movie of movies) {
+            if (ord === movie.id) {
+              this.setData({
+                movies: movie
+              })
+            }
           }
-        }
+        } else {
+          setTimeout(() => {
+            wx.navigateBack()
+          }, 2000)
+        }        
       },
       fail: result => {
-        console.log('error')
+        wx.hideLoading()
+        setTimeout(() => {
+          wx.navigateBack()
+        }, 2000)
       }
     })
   },
