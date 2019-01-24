@@ -1,25 +1,37 @@
 <!--pages/user/user.wxml-->
-<view class='title'>收藏的影评∨</view>
-
-<view class='movie_list'>
-  <view class='area'>
-    <image src='/img/p2517753454.jpg' class='img__movie'></image>
-    <view class='introduce'>
-      <view>复仇者联盟3：无限战争</view>
-      <view>评论</view>
-      <view>谁评论的</view>
+<view wx:if="{{!userInfo}}">
+  <view class="unlogin-card">
+    <view class="unlogin-head"></view>
+    <view class="unlogin-info">
+      <view class="unlogin-text">未登录</view>
+      <view class="unlogin-tips">点击微信登录后开始收藏评论电影</view>
     </view>
   </view>
+  <button class="unlogin-btn" open-type="getUserInfo" bindgetuserinfo="onTapLogin">微信登录</button>
+</view>
 
-  <view class='area'>
-    <image src='/img/p1606727862.jpg' class='img__movie'></image>
-    <view class='introduce'>
-      <view>千与千寻</view>
-      <view>评论</view>
-      <view>谁评论的</view>
+<view wx:if="{{userInfo}}">
+  <view class='title'>收藏的影评∨</view>
+  <view class='movie_list'>
+    <view class='area'>
+      <image src='/img/p2517753454.jpg' class='img__movie'></image>
+      <view class='introduce'>
+        <view>复仇者联盟3：无限战争</view>
+        <view>评论</view>
+        <view>谁评论的</view>
+      </view>
+    </view>
+    <view class='area'>
+      <image src='/img/p1606727862.jpg' class='img__movie'></image>
+      <view class='introduce'>
+        <view>千与千寻</view>
+        <view>评论</view>
+        <view>谁评论的</view>
+      </view>
     </view>
   </view>
 </view>
+
 
 <view class='nav-bar'>
   <view class='home' bindtap='onTapHome'>回到首页</view>
