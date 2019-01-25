@@ -24,6 +24,9 @@ var config = {
         uploadUrl: `${host}/weapp/upload`,
         movieList: `${host}/weapp/movies`,
         movieDetail: `${host}/weapp/movies/`,
+
+        // 拉取用户信息
+        user: `${host}/weapp/user`,
     }
 };
 

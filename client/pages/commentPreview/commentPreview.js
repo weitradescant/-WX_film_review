@@ -25,9 +25,8 @@ Page({
       success: result => {
         wx.hideLoading()
         this.setData({
-          movies: result.data.data[0]
+          movies: result.data.data
         })
-        console.log(this.data)
       },
       fail: result => {
         wx.hideLoading()

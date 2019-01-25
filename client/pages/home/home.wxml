@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <image src='{{movies.image}}' class='img__movie' bindtap='onTapMoiveDtl' data-movieid='{{movies.id}}'></image>
 <view class='moive-title'>{{movies.title}}</view>
-<view class='moive-recommend' bindtap='onTapCommentDtl'>XX给你推荐了一部电影</view>
+<view class='moive-recommend' bindtap='onTapCommentDtl' data-movieid='{{movies.id}}'>XX给你推荐了一部电影</view>
 <view class='nav-bar'>
   <view class='moive-list' bindtap='onTapMoiveList'><image src='/img/icon/moive-list.png' class='icon'></image>热门</view>
   <view class='user' bindtap='onTapUser'><image src='/img/icon/user.png' class='icon'></image>我的</view>

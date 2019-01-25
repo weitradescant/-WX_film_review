@@ -43,9 +43,10 @@ Page({
       url: '/pages/movieDtl/movieDtl?movieid=' + movieid,
     })
   },
-  onTapCommentDtl() {
+  onTapCommentDtl(e) {
+    let movieid = e.currentTarget.dataset.movieid;
     wx.navigateTo({
-      url: '/pages/commentDtl/commentDtl',
+      url: '/pages/commentDtl/commentDtl?movieid=' + movieid,
     })
   },
   onTapMoiveList(){

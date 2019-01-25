@@ -1,5 +1,17 @@
 <!--pages/commentDtl/commentDtl.wxml-->
-<view class='wrap'>
+<view wx:if="{{!userInfo}}">
+  <view class="unlogin-card">
+    <view class="unlogin-head"></view>
+    <view class="unlogin-info">
+      <view class="unlogin-text">未登录</view>
+      <view class="unlogin-tips">点击微信登录后可方便浏览影评</view>
+    </view>
+  </view>
+  <button wx:if="{{locationAuthType==0}}" class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+  <button wx:if="{{locationAuthType==1}}" class="unlogin-btn" open-type='openSetting' bindopensetting="onTapLogin">授权登录</button>
+</view> 
+
+<view class='wrap' wx:if="{{userInfo}}">
   <image src='/img/p2517753454.jpg' class='img__movie'></image>
   <view class='title'>复仇者联盟3：无限战争</view>
   <view>评论评论</view>
