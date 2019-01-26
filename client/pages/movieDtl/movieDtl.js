@@ -55,7 +55,7 @@ Page({
   },
   onTapCommentList() {
     wx.navigateTo({
-      url: '/pages/commentList/commentList',
+      url: '/pages/commentList/commentList?movieid=' + this.data.movieid,
     })
   },
   onTapAddComment() {
