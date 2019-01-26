@@ -2,7 +2,7 @@
 <view class='wrap'>
   <image src='{{movies.image}}' class='img__movie'></image>
   <view class='title'>{{movies.title}}</view>
-  <view>评论评论</view>
+  <view class='comment'>{{commentValue}}</view>
   <view class='operation'>
     <view class='commentList' bindtap='onTapCommentEdit'><image src='/img/icon/back.png' class='icon'></image>重新编辑</view>
     <view class='addComment' bindtap='onTapCommentList'><image src='/img/icon/issue.png' class='icon'></image>发布影评</view>

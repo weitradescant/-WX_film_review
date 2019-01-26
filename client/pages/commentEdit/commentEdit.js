@@ -7,8 +7,7 @@ Page({
     movieid: "",
     movies: {},
     isRecord: false,
-    tempFilePath: "",
-    duration: 0
+    commentValue: ""
   },
 
   onLoad: function (options) {
@@ -34,11 +33,18 @@ Page({
         }, 2000)
       }
     })
-    
+  },
+  onInput(event) {
+    this.setData({
+      commentValue: event.detail.value.trim()
+    })
   },
   onTapCommentPreview() {
+    if (!this.data.commentValue && !this.data.tempFilePath){
+      return false
+    }
     wx.navigateTo({
-      url: '/pages/commentPreview/commentPreview?movieid=' + this.data.movieid+'&type=' + this.data.type+'&duration=' + this.data.duration + '&tempFilePath=' + this.data.tempFilePath
+      url: '/pages/commentPreview/commentPreview?movieid=' + this.data.movieid + '&type=' + this.data.type + '&commentValue=' + this.data.commentValue
     })
   },
   onTapStartRecord() {
@@ -60,11 +66,15 @@ Page({
       recorderManager.stop()//结束录音
     }
     recorderManager.onStop((res) => {//监听停止事件
+      wx.showModal({
+        title: '提示',
+        content: '录音完成',
+        showCancel: false
+      })
       const { tempFilePath } = res//临时地址
       this.setData({
         isRecord: false,
-        tempFilePath: res.tempFilePath,
-        duration: res.duration
+        commentValue: res
       })
     })
   }

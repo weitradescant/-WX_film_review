@@ -7,7 +7,7 @@ Page({
     userInfo: null,
     locationAuthType: app.data.locationAuthType,
     movieid: "",
-    movies: []
+    movies: {}
   },
   onLoad(options) {
     wx.showLoading({

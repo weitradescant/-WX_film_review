@@ -2,7 +2,7 @@
 const qcloud = require('../../vendor/wafer2-client-sdk/index');
 const config = require('../../config')
 data: {
-  movies: [];
+  movies: {};
 }
 Page({
   onLoad: function (options){
@@ -37,16 +37,15 @@ Page({
       }
     })
   },
-  onTapMoiveDtl(e) {
-    let movieid = e.currentTarget.dataset.movieid;
+  onTapMoiveDtl() {
     wx.navigateTo({
-      url: '/pages/movieDtl/movieDtl?movieid=' + movieid,
+      url: '/pages/movieDtl/movieDtl?movieid=' + this.data.movies.id,
     })
   },
   onTapCommentDtl(e) {
     let movieid = e.currentTarget.dataset.movieid;
     wx.navigateTo({
-      url: '/pages/commentDtl/commentDtl?movieid=' + movieid,
+      url: '/pages/commentDtl/commentDtl?movieid=' + this.data.movies.id,
     })
   },
   onTapMoiveList(){

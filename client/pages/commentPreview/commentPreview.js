@@ -6,8 +6,7 @@ Page({
     type: "",
     movieid: "",
     movies: {},
-    tempFilePath: "",
-    duration: 0
+    commentValue:""
   },
 
   onLoad: function (options) {
@@ -17,8 +16,7 @@ Page({
     this.setData({
       type: options.type,//0为文字 1为音频
       movieid: options.movieid,
-      tempFilePath: options.tempFilePath,
-      duration: options.tempFilePath
+      commentValue: options.commentValue
     })
     qcloud.request({
       url: config.service.movieDetail + options.movieid,
@@ -36,14 +34,50 @@ Page({
       }
     })
   },
-  onTapCommentEdit() {
+  onTapCommentEdit() {//重新编辑
     wx.navigateTo({//返回判断返回那种类型的编辑
       url: '/pages/commentEdit/commentEdit?type=' + this.data.type + '&movieid=' + this.data.movieid
     })
   },
-  onTapCommentList() {
-    wx.navigateTo({
-      url: '/pages/commentList/commentList',
+  onTapCommentList() {//发布影评
+    let content = this.data.commentValue
+    if (!content) return
+
+    qcloud.request({
+      url: config.service.addComment,
+      login: true,
+      method: 'PUT',
+      data: {
+        content: content,
+        movie_id: this.data.movieid
+      },
+      success: result => {
+        wx.hideLoading()
+        console.log(result)
+        let data = result.data
+        if (!data.code) {
+          wx.showToast({
+            title: '发表评论成功'
+          })
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '/pages/commentList/commentList',
+            })
+          }, 1500)
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '发表评论失败'
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '发表评论失败'
+        })
+      }
     })
   },
 })

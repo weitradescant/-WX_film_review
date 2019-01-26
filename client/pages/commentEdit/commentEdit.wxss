@@ -60,3 +60,6 @@ page{
   background: #09BA07;
   color: #fff;
 }
+.complete.dis {
+  background-color: rgba(52, 55, 61, 0.5);
+}

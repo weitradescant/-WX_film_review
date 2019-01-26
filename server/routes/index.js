@@ -35,5 +35,7 @@ router.post('/message', controllers.message.post)
 router.get('/movies', controllers.movies.list)
 //获取电影详情
 router.get('/movies/:id', controllers.movies.detail)
+// 添加评论
+router.put('/comment', validationMiddleware, controllers.comment.add)
 
 module.exports = router
