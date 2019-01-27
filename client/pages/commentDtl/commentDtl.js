@@ -8,14 +8,17 @@ Page({
     movieid: "",
     movies: {},
     locationAuthType: app.data.locationAuthType,
+    user: ""
   },
   onLoad: function (options) {
     wx.showLoading({
       title: '评论加载中...',
     })
     this.setData({
-      movieid: options.movieid
+      movieid: options.movieid,
+      user: options.user
     })
+    //获取电影信息
     qcloud.request({
       url: config.service.movieDetail + options.movieid,
       success: result => {
@@ -27,6 +30,24 @@ Page({
       fail: result => {
         wx.hideLoading()
         setTimeout(() => {
+          wx.navigateBack()
+        }, 2000)
+      }
+    })
+    //获取评论
+    qcloud.request({
+      url: config.service.commentDetail,
+      data: {
+        movie_id: this.data.movieid,
+        user: this.data.user
+      },
+      success: result => {
+        console.log(this.data.movieid, this.data.user,result)
+      },
+      fail: result => {
+        wx.hideLoading()
+        setTimeout(() => {
+          console.log(this.data.movieid, this.data.user)
           wx.navigateBack()
         }, 2000)
       }

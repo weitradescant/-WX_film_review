@@ -35,6 +35,10 @@ router.post('/message', controllers.message.post)
 router.get('/movies', controllers.movies.list)
 //获取电影详情
 router.get('/movies/:id', controllers.movies.detail)
+//获取所有评论列表
+router.get('/comment/:id', controllers.comment.list)
+//获取评论详情
+router.get('/commentDetail', controllers.commentDetail.comment)
 // 添加评论
 router.put('/comment', validationMiddleware, controllers.comment.add)
 

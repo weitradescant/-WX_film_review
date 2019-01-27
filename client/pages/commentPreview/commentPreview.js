@@ -42,18 +42,17 @@ Page({
   onTapCommentList() {//发布影评
     let content = this.data.commentValue
     if (!content) return
-
     qcloud.request({
       url: config.service.addComment,
       login: true,
       method: 'PUT',
       data: {
         content: content,
-        movie_id: this.data.movieid
+        movie_id: this.data.movieid,
+        type: this.data.type
       },
       success: result => {
         wx.hideLoading()
-        console.log(result)
         let data = result.data
         if (!data.code) {
           wx.showToast({
@@ -61,7 +60,7 @@ Page({
           })
           setTimeout(() => {
             wx.navigateTo({
-              url: '/pages/commentList/commentList',
+              url: '/pages/commentList/commentList?movieid=' + this.data.movieid,
             })
           }, 1500)
         } else {

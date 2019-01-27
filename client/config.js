@@ -22,9 +22,13 @@ var config = {
 
         // 上传图片接口
         uploadUrl: `${host}/weapp/upload`,
+
         movieList: `${host}/weapp/movies`,
         movieDetail: `${host}/weapp/movies/`,
-
+        //获取评论列表
+        commentList: `${host}/weapp/comment/`,
+        //获取详细评论
+        commentDetail: `${host}/weapp/commentDetail`,
         // 拉取用户信息
         user: `${host}/weapp/user`,
         // 添加评论

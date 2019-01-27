@@ -1,9 +1,10 @@
 <!--pages/commentList/commentList.wxml-->
-<view class='comment' bindtap='onTapCommentDtl'>
-
-</view>
-<view class='comment' bindtap='onTapCommentDtl'>
-
+<view class='comment' bindtap='onTapCommentDtl' wx:for='{{comment}}' wx:key='id' wx:for-item='item' data-user='{{item.user}}'>
+  <view class='user'>
+    <image src='{{item.avatar}}' class='img__avatar'></image>
+    <view class='username'>{{item.username}}</view>
+  </view>
+  <view class='content'>{{item.content}}</view>
 </view>
 
 
