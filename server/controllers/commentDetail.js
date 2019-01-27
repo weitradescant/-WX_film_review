@@ -8,7 +8,7 @@ module.exports = {
     let movieId = ctx.request.body.movie_id
     let user = ctx.request.body.user
     let comment
-    comment = (await DB.query("select * from commentwhere comment.movie_id = ? and comment.user = ?", [movieId, user]))
+    comment = (await DB.query("select * from comment where comment.movie_id = ? and comment.user = ?", [movieId, user]))
     ctx.state.data = comment
   },
 }
