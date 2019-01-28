@@ -26,6 +26,23 @@ page{
   font-weight: bold;
 }
 
+.recommend__wrap{
+  margin-top: 30rpx;
+  text-align: center;
+}
+.img__avatar{
+  display: inline-block;
+  width:100rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+}
+.user{
+  display: inline-block;
+  font-size: 34rpx;
+  line-height: 100rpx;
+  vertical-align: top;
+}
+
 .operation{
   position: absolute;
   display: flex;

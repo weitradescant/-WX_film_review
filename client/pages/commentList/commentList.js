@@ -20,6 +20,14 @@ Page({
         let data = result.data.data
         let commentLen = result.data.data.length
         if (!commentLen) {
+          wx.showToast({
+            icon: 'none',
+            title: '该影片暂无评论',
+            mask: true
+          })
+          setTimeout(() => {
+            wx.navigateBack()
+          }, 1000)
           return false
         }
         this.setData({

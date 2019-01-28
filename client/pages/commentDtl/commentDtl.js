@@ -8,7 +8,8 @@ Page({
     movieid: "",
     movies: {},
     locationAuthType: app.data.locationAuthType,
-    user: ""
+    user: "",
+    comment:{}
   },
   onLoad: function (options) {
     wx.showLoading({
@@ -42,12 +43,14 @@ Page({
         user: this.data.user
       },
       success: result => {
-        console.log(this.data.movieid, this.data.user,result)
+        this.setData({
+          comment: result.data.data[0]
+        })
+        console.log(this.data)
       },
       fail: result => {
         wx.hideLoading()
         setTimeout(() => {
-          console.log(this.data.movieid, this.data.user)
           wx.navigateBack()
         }, 2000)
       }

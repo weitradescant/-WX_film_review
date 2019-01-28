@@ -14,7 +14,11 @@
 <view class='wrap' wx:if="{{userInfo}}">
   <image src='{{movies.image}}' class='img__movie'></image>
   <view class='title'>{{movies.title}}</view>
-  <view>评论评论</view>
+  <view wx:if="{{comment}}" class='recommend__wrap'>
+    <image src='{{comment.avatar}}' class='img__avatar'></image>
+    <view class='user'>{{comment.username}}的影评</view>
+    <view class='moive-recommend'>{{comment.content}}</view>
+  </view>
   <view class='operation'>
     <view class='commentList' bindtap='onTapCommentList'><image src='/img/icon/fav.png' class='icon'></image>收藏影评</view>
     <view class='addComment' bindtap='onTapAddComment'><image src='/img/icon/comment.png' class='icon'></image>写影评</view>
