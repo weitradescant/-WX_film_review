@@ -16,7 +16,8 @@ Page({
     })
     this.setData({
       type: options.type,//0为文字 1为音频
-      movieid: options.movieid
+      movieid: options.movieid,
+      commentValue: options.commentValue ? options.commentValue : ""
     })
     qcloud.request({
       url: config.service.movieDetail + options.movieid,
@@ -44,7 +45,7 @@ Page({
       return false
     }
     wx.navigateTo({
-      url: '/pages/commentPreview/commentPreview?movieid=' + this.data.movieid + '&type=' + this.data.type + '&commentValue=' + this.data.commentValue
+      url: '/pages/commentPreview/commentPreview?movieid=' + this.data.movieid + '&type=' + this.data.type + '&commentValue=' + this.data.commentValue.replace('=', '%3D')
     })
   },
   onTapStartRecord() {
@@ -71,11 +72,13 @@ Page({
         content: '录音完成',
         showCancel: false
       })
-      const { tempFilePath } = res//临时地址
       this.setData({
         isRecord: false,
-        commentValue: res
+        commentValue: res.tempFilePath
       })
     })
+  },
+  onPullDownRefresh() {
+    wx.stopPullDownRefresh()
   }
 })

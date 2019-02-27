@@ -39,7 +39,12 @@ router.get('/movies/:id', controllers.movies.detail)
 router.get('/comment/:id', controllers.comment.list)
 //获取评论详情
 router.get('/commentDetail', controllers.commentDetail.comment)
+//获取某人所有评论
+router.get('/commentDetail/:id', controllers.commentDetail.list)
 // 添加评论
 router.put('/comment', validationMiddleware, controllers.comment.add)
-
+//收藏评论
+router.put('/collect', validationMiddleware, controllers.collect.add)
+//获取收藏的评论列表
+router.get('/collect/:id', controllers.collect.list)
 module.exports = router

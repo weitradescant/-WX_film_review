@@ -7,7 +7,8 @@ Page({
     userInfo: null,
     locationAuthType: app.data.locationAuthType,
     movieid: "",
-    movies: {}
+    movies: {},
+    hasComment: ""
   },
   onLoad(options) {
     wx.showLoading({
@@ -58,6 +59,11 @@ Page({
       url: '/pages/commentList/commentList?movieid=' + this.data.movieid,
     })
   },
+  onTapMyComment() {
+    wx.navigateTo({
+      url: '/pages/commentDtl/commentDtl?movieid=' + this.data.movieid + '&user=' + this.data.userInfo.openId,
+    })
+  },
   onTapAddComment() {
     let movieid = this.data.movieid
     wx.showActionSheet({
@@ -82,7 +88,34 @@ Page({
         this.setData({
           userInfo
         })
+        //查看用户是否评论过
+        qcloud.request({
+          url: config.service.commentDetail,
+          data: {
+            movie_id: this.data.movieid,
+            user: this.data.userInfo.openId
+          },
+          success: result => {
+            if (result.data.data.length == 0){
+              this.setData({
+                hasComment: 0
+              })
+            } else {
+              this.setData({
+                hasComment: 1
+              })
+            }
+          },
+          fail: result => {
+            setTimeout(() => {
+              wx.navigateBack()
+            }, 2000)
+          }
+        })
       }
     })
   },
+  onPullDownRefresh() {
+    wx.stopPullDownRefresh()
+  }
 })

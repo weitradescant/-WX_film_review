@@ -2,6 +2,7 @@
 const qcloud = require('../../vendor/wafer2-client-sdk/index');
 const config = require('../../config')
 const app = getApp()
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
   data: {
     userInfo: null,
@@ -9,7 +10,8 @@ Page({
     movies: {},
     locationAuthType: app.data.locationAuthType,
     user: "",
-    comment:{}
+    comment:{},
+    hasComment: ""
   },
   onLoad: function (options) {
     wx.showLoading({
@@ -46,7 +48,6 @@ Page({
         this.setData({
           comment: result.data.data[0]
         })
-        console.log(this.data)
       },
       fail: result => {
         wx.hideLoading()
@@ -64,12 +65,22 @@ Page({
           userInfo,
           locationAuthType: app.data.locationAuthType
         })
+        this.hasComment()
       },
       error: () => {
         this.setData({
           locationAuthType: app.data.locationAuthType
         })
       }
+    })
+  },
+  onTapStartRecord() {
+    innerAudioContext.src = this.data.comment.content;
+    innerAudioContext.play();
+  },
+  onTapMyComment() {
+    wx.navigateTo({
+      url: '/pages/commentDtl/commentDtl?movieid=' + this.data.movieid + '&user=' + this.data.userInfo.openId,
     })
   },
   onTapAddComment() {
@@ -83,6 +94,42 @@ Page({
       }
     })
   },
+  onTapCollect() {
+      qcloud.request({
+        url: config.service.collect,
+        login: true,
+        method: 'PUT',
+        data: {
+          user:this.data.userInfo.openId,
+          comment_id:this.data.comment.id
+        },
+        success: result => {
+          wx.hideLoading()
+          let data = result.data
+          if (!data.code) {
+            wx.showToast({
+              icon: 'none',
+              title: data.data.msg
+            })
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '收藏评论失败'
+            })
+          }
+        },
+        fail: () => {
+          wx.hideLoading()
+          wx.showToast({
+            icon: 'none',
+            title: '收藏评论失败'
+          })
+        }
+      })
+
+
+    console.log(this.data)
+  },
   onShow: function () {
     // 同步授权状态
     this.setData({
@@ -93,7 +140,37 @@ Page({
         this.setData({
           userInfo
         })
+        this.hasComment()
       }
     })
   },
+  //查看用户是否评论过
+  hasComment() {
+    qcloud.request({
+      url: config.service.commentDetail,
+      data: {
+        movie_id: this.data.movieid,
+        user: this.data.userInfo.openId
+      },
+      success: result => {
+        if (result.data.data.length == 0) {
+          this.setData({
+            hasComment: 0
+          })
+        } else {
+          this.setData({
+            hasComment: 1
+          })
+        }
+      },
+      fail: result => {
+        setTimeout(() => {
+          wx.navigateBack()
+        }, 2000)
+      }
+    })
+  },
+  onPullDownRefresh() {
+    wx.stopPullDownRefresh()
+  }
 })

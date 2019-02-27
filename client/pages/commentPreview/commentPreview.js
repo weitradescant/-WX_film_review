@@ -1,8 +1,12 @@
 // pages/commentPreview/commentPreview.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index');
 const config = require('../../config')
+const app = getApp()
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
   data: {
+    locationAuthType: app.data.locationAuthType,
+    userInfo: null,
     type: "",
     movieid: "",
     movies: {},
@@ -16,7 +20,7 @@ Page({
     this.setData({
       type: options.type,//0为文字 1为音频
       movieid: options.movieid,
-      commentValue: options.commentValue
+      commentValue: options.commentValue.replace('%3D', '=')
     })
     qcloud.request({
       url: config.service.movieDetail + options.movieid,
@@ -34,9 +38,28 @@ Page({
       }
     })
   },
+  onShow: function () {
+    // 同步授权状态
+    this.setData({
+      locationAuthType: app.data.locationAuthType
+    })
+    app.checkSession({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo
+        })
+      }
+    })
+  },
+  onTapStartRecord() {
+    innerAudioContext.src = this.data.commentValue;
+    innerAudioContext.play();
+  },
+
   onTapCommentEdit() {//重新编辑
+    let commentValue = this.data.type == "0" ? this.data.commentValue : ""
     wx.navigateTo({//返回判断返回那种类型的编辑
-      url: '/pages/commentEdit/commentEdit?type=' + this.data.type + '&movieid=' + this.data.movieid
+      url: '/pages/commentEdit/commentEdit?type=' + this.data.type + '&movieid=' + this.data.movieid + '&commentValue=' + this.data.commentValue
     })
   },
   onTapCommentList() {//发布影评
@@ -79,4 +102,7 @@ Page({
       }
     })
   },
+  onPullDownRefresh() {
+    wx.stopPullDownRefresh()
+  }
 })

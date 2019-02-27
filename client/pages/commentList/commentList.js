@@ -7,9 +7,12 @@ Page({
     comment: []
   },
   onLoad: function (options) {
-    this.setData({
-      movieid: options.movieid
-    })
+    wx.stopPullDownRefresh()
+    if (options){
+      this.setData({
+        movieid: options.movieid
+      })
+    }
     wx.showLoading({
       title: '电影评论加载中...',
     })
@@ -52,5 +55,8 @@ Page({
     wx.navigateTo({
       url: '/pages/home/home',
     })
+  },
+  onPullDownRefresh() {
+    this.onLoad()
   }
 })

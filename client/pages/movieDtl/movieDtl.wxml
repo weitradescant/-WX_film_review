@@ -17,6 +17,7 @@
   <view class='description'>{{movies.description}}</view>
   <view class='operation'>
     <view class='commentList' bindtap='onTapCommentList'><image src='/img/icon/commentList.png' class='icon'></image>查看影评</view>
-    <view class='addComment' bindtap='onTapAddComment'><image src='/img/icon/addComment.png' class='icon'></image>添加影评</view>
+    <view class='addComment' bindtap='onTapAddComment' wx:if="{{hasComment == 0}}"><image src='/img/icon/addComment.png' class='icon'></image>添加影评</view>
+    <view class='addComment' bindtap='onTapMyComment' wx:if="{{hasComment == 1}}"><image src='/img/icon/addComment.png' class='icon'></image>我的影评</view>
   </view>
 </view>

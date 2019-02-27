@@ -8,6 +8,9 @@ Page({
     comment: ""
   },
   onLoad: function (options){
+    this.init()
+  },
+  init(){
     wx.showLoading({
       title: '电影数据加载中...',
     })
@@ -15,7 +18,7 @@ Page({
       url: config.service.movieList,
       success: result => {
         wx.hideLoading()
-        if(!result.data.code){
+        if (!result.data.code) {
           let ord = Math.floor(Math.random() * 15 + 1);
           let movies = result.data.data;
           for (const movie of movies) {
@@ -37,7 +40,10 @@ Page({
             wx.hideLoading()
             let data = result.data.data
             let commentLen = result.data.data.length
-            if (!commentLen){
+            if (!commentLen) {
+              this.setData({
+                comment: ""
+              })
               return false
             }
             let comord = Math.floor(Math.random() * commentLen);
@@ -52,6 +58,7 @@ Page({
             }, 2000)
           }
         })
+        wx.stopPullDownRefresh()
       },
       fail: result => {
         wx.hideLoading()
@@ -82,4 +89,7 @@ Page({
       url: '/pages/user/user',
     })
   },
+  onPullDownRefresh(){
+    this.init()
+  }
 })

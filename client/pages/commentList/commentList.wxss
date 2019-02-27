@@ -33,6 +33,21 @@ page{
   text-overflow: ellipsis;
   overflow-x: hidden;
 }
+.icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  vertical-align: text-bottom;
+}
+.record{
+  width: 260rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 auto;
+  border: 1px solid #E6EBF0;
+  text-align: center;
+  font-size: 34rpx;
+}
 .nav-bar{
   position: fixed;
   bottom: 0;

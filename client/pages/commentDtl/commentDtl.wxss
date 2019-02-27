@@ -42,7 +42,18 @@ page{
   line-height: 100rpx;
   vertical-align: top;
 }
-
+.record{
+  width: 275rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 50rpx auto 0;
+  border: 1px solid #E6EBF0;
+  text-align: center;
+  font-size: 34rpx;
+}
+.record:active{
+  background: #eee;
+}
 .operation{
   position: absolute;
   display: flex;

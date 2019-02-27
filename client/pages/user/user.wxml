@@ -11,25 +11,28 @@
 </view>
 
 <view wx:if="{{userInfo}}">
-  <view class='title'>收藏的影评∨</view>
-  <view class='movie_list'>
-    <view class='area'>
-      <image src='/img/p2517753454.jpg' class='img__movie'></image>
-      <view class='introduce'>
-        <view>复仇者联盟3：无限战争</view>
-        <view>评论</view>
-        <view>谁评论的</view>
-      </view>
+  <!-- 导航栏开始 -->
+  <view class="swiper-tab">
+    <view wx:for="{{tabs}}" wx:key class="swiper-tab-item {{curIdx==index?'swiper-active':''}}" data-current="{{index}}" catchtap="clickTab">
+      <text>{{item}}</text>
     </view>
-    <view class='area'>
-      <image src='/img/p1606727862.jpg' class='img__movie'></image>
+  </view>
+  <view class='movie_list'>
+    <view class='area' bindtap='onTapCommentDtl' wx:for='{{comments}}' wx:key='id' wx:for-item='item' data-user='{{item.user}}' data-movieid='{{item.movie_id}}'>
+      <image src='{{item.image}}' class='img__movie'></image>
       <view class='introduce'>
-        <view>千与千寻</view>
-        <view>评论</view>
-        <view>谁评论的</view>
+        <view class='movie_title'>{{item.title}}</view>
+        <view class='movie_comment' wx:if="{{item.isrecord=='0'}}">{{item.content}}</view>
+  <view class='record' wx:if="{{item.isrecord=='1'}}"><image src='/img/icon/record.png' class='icon'></image>语音评论</view>
+        <image src='{{item.avatar}}' class='img__avatar'></image>
+        <view class='username'>{{item.username}}</view>
       </view>
     </view>
   </view>
+
+
+
+
 </view>
 
 

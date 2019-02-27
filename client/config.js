@@ -29,10 +29,16 @@ var config = {
         commentList: `${host}/weapp/comment/`,
         //获取详细评论
         commentDetail: `${host}/weapp/commentDetail`,
+        //获取某人所有评论
+        commented: `${host}/weapp/commentDetail/`,
         // 拉取用户信息
         user: `${host}/weapp/user`,
         // 添加评论
         addComment: `${host}/weapp/comment`,
+        //收藏评论
+        collect: `${host}/weapp/collect`,
+        //获取收藏的评论列表
+        collectList: `${host}/weapp/collect/`,
     }
 };
 

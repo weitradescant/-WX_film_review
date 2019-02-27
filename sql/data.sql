@@ -20,6 +20,12 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `collect` (
+  `user` varchar(255) NOT NULL,
+  `comment_id` int(11) NOT NULL,
+  PRIMARY KEY (`user`,`comment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 SET @IMAGE_BASE_URL = "https://film-1258073751.cos.ap-shanghai.myqcloud.com/"; -- FOR EXAMPLE: https://*****.ap-shanghai.myqcloud.com/
 
 INSERT INTO `movies` (`id`, `image`, `title`, `category`, `description`) VALUES

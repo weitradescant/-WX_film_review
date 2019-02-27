@@ -4,9 +4,9 @@
     <image src='{{item.avatar}}' class='img__avatar'></image>
     <view class='username'>{{item.username}}</view>
   </view>
-  <view class='content'>{{item.content}}</view>
+  <view class='content' wx:if="{{item.isrecord=='0'}}">{{item.content}}</view>
+  <view class='record' wx:if="{{item.isrecord=='1'}}"><image src='/img/icon/record.png' class='icon'></image>语音评论</view>
 </view>
-
 
 <view class='nav-bar'>
   <view class='home' bindtap='onTapHome'>回到首页</view>

@@ -6,6 +6,7 @@ data: {
 }
 Page({
   onLoad: function (options) {
+    wx.stopPullDownRefresh()
     wx.showLoading({
       title: '电影列表加载中...',
     })
@@ -36,5 +37,8 @@ Page({
     wx.navigateTo({
       url: '/pages/movieDtl/movieDtl?movieid=' + movieid,
     })
+  },
+  onPullDownRefresh() {
+    this.onLoad()
   }
 })
